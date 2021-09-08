@@ -1,3 +1,4 @@
+#include <inttypes.h>
 /*
  * USAGE:
  * char ipadddress_buffer[PREFIX_LENGTH]; // (16)
@@ -9,7 +10,7 @@
  * EX: 192.168.1.1, 24 -> 192.168.1.255
  * EX: 10.1.23.10, 20 -> 10.1.31.255
  */ 
-void get_broadcast_address(char *ip_address, char mask, char output_buffer);
+void get_broadcast_address(const char *ip_address, uint8_t mask, char *output_buffer);
 
 /*
  * USAGE:
@@ -19,4 +20,4 @@ void get_broadcast_address(char *ip_address, char mask, char output_buffer);
  * EX: 192.168.2.10 -> 3_232_236_042
  * EX: 10.1.23.10 -> 167_843_594
  */
-unsigned int get_ip_integer_equivalent(char *ip_address);
+uint_fast32_t get_ip_integer_equivalent(const char *ip_address);
