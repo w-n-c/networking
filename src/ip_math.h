@@ -33,7 +33,7 @@ uint_fast32_t get_ip_integer_equivalent(const char *ip_address);
  * printf("IP address in A.B.C.D format is %s\n", ip_address_buffer);
  * EX: 2058138165 -> 122.172.178.53
  */
-void get_dot_ip_format(uint_fast32_t ip_address, char *output_buffer);
+void get_dot_ip_format(const uint_fast32_t ip_address, char *output_buffer);
 
 /*
  * USAGE:
@@ -46,7 +46,7 @@ void get_dot_ip_format(uint_fast32_t ip_address, char *output_buffer);
  * EX: 192.168.1.1 24 -> 129.168.0.0
  * EX: 10.1.23.10 20 -> 10.1.16.0
  */
-void get_network_id(char *ip_address, uint8_t mask, char *output_buffer);
+void get_network_id(const char *ip_address, const uint8_t mask, char *output_buffer);
 
 /*
  * USAGE:
@@ -55,7 +55,7 @@ void get_network_id(char *ip_address, uint8_t mask, char *output_buffer);
  * EX: 24 -> 254
  * EX: 30 -> 2
  */
-void get_subnet_cardinality(uint8_t mask);
+uint_fast32_t get_subnet_cardinality(const uint8_t mask);
 
 /*
  * USAGE:
@@ -68,4 +68,4 @@ void get_subnet_cardinality(uint8_t mask);
  * EX: 192.168.0.0 24 192.168.0.13 -> true
  * EX: 192.168.0.0 24 192.169.0.13 -> false
  */
-bool is_ip_in_subnet(char *network_id, uint8_t mask, char* ip_address);
+bool is_ip_in_subnet(const char *network_id, const uint8_t mask, const char* ip_address);

@@ -39,3 +39,11 @@ add_test(NAME broadcastMask20
 set_tests_properties(broadcastMask20 PROPERTIES
   PASS_REGULAR_EXPRESSION "10\.1\.31\.255"
 )
+
+add_test(NAME dotIp
+  COMMAND ip_math dot 2058138165
+)
+
+set_tests_properties(dotIp PROPERTIES
+  PASS_REGULAR_EXPRESSION "122\.172\.178\.53"
+)
