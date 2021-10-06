@@ -47,3 +47,43 @@ add_test(NAME dotIp
 set_tests_properties(dotIp PROPERTIES
   PASS_REGULAR_EXPRESSION "122\.172\.178\.53"
 )
+
+add_test(NAME cardinality1
+  COMMAND ip_math cardinality 24
+)
+
+set_tests_properties(cardinality1 PROPERTIES
+  PASS_REGULAR_EXPRESSION "254"
+)
+
+add_test(NAME cardinality2
+  COMMAND ip_math cardinality 16
+)
+
+set_tests_properties(cardinality2 PROPERTIES
+  PASS_REGULAR_EXPRESSION "65534"
+)
+
+add_test(NAME networkAddressAvailableInSubnet
+  COMMAND ip_math in_subnet 192.168.1.0 24 192.168.1.0
+)
+
+set_tests_properties(networkAddressAvailableInSubnet PROPERTIES
+  PASS_REGULAR_EXPRESSION "ip address 192.168.1.0 is not in network 192.168.1.0/24"
+)
+
+add_test(NAME broadcastAddressAvailableInSubnet
+  COMMAND ip_math in_subnet 192.168.1.0 24 192.168.1.255
+)
+
+set_tests_properties(broadcastAddressAvailableInSubnet PROPERTIES
+  PASS_REGULAR_EXPRESSION "ip address 192.168.1.255 is not in network 192.168.1.0/24"
+)
+
+add_test(NAME addressInSubnet
+  COMMAND ip_math in_subnet 192.168.1.0 24 192.168.1.5
+)
+
+set_tests_properties(addressInSubnet PROPERTIES
+  PASS_REGULAR_EXPRESSION "ip address 192.168.1.5 is in network 192.168.1.0/24"
+)

@@ -40,7 +40,6 @@ uint_fast32_t get_ip_integer_equivalent(const char *ip_address) {
 	return integer_ip;
 }
 
-// TOTEST (explicitly)
 void get_dot_ip_format(const uint_fast32_t ip_address, char *output_buffer) {
   for (int i = 24; i >= 0; i-=8) {
     const int bytes_written = sprintf(output_buffer, "%hhu", (uint8_t)(ip_address >> i));
@@ -53,12 +52,10 @@ void get_dot_ip_format(const uint_fast32_t ip_address, char *output_buffer) {
   }
 }
 
-// TOTEST
 uint_fast32_t get_subnet_cardinality(uint8_t mask) {
   return (1 << (32 - mask)) - 2;
 }
 
-// TOTEST
 bool is_ip_in_subnet(const char *network_id, const uint8_t mask, const char* ip_address) {
   const uint_fast32_t int_network_id = get_ip_integer_equivalent(network_id);
   const uint_fast32_t cardinality = get_subnet_cardinality(mask);
